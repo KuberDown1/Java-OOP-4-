@@ -1,0 +1,81 @@
+Guessing;
+//********************************************************************
+//  Guessing.java       Author: Kuber, Tulsi
+//
+//  Design and implement an application that plays the Hi- Lo Game
+//  with the user.
+//********************************************************************
+
+import java.util.*;
+
+public class Guessing
+{
+    public static void main(String[]args)
+    {
+        
+//------------------------------------------------------------------------------
+//The int variable again is initialized and declared to repeat game or end game
+//------------------------------------------------------------------------------
+        int again = 0;
+
+//------------------------------------------------------------------------------
+//The first do while block is the start of the game.
+//The scanner is created to read user input.
+//The random number generator is created to select a number between 1 & 100.
+//The int variables for answer, guess and numGuesses are declared & initialized.
+//------------------------------------------------------------------------------
+    do {
+       
+       Scanner scan = new Scanner(System.in);
+       Random r = new Random();
+       int answer = r.nextInt(100) +1;
+       int guess = 0;
+       int numGuesses = 0;
+       
+       System.out.println("I'm thinking of a number from 1 to 100 (inclusive).");
+       System.out.println("You have 5 attempts to guess it.");
+      
+//------------------------------------------------------------------------------
+//The second do while block is nested in first.
+//An if- else statement is nested in the second do while block.
+//The user is prompted to enter a guess.
+//numGuesses increases by 1 with every iteration of the second do loop.
+//guess is compared to answer to determine programs response.
+//Boolean expression allows loop to continue, as long as guess does not
+//equal answer and user has not exceeded 5 guesses or entered 0 to quit.
+//------------------------------------------------------------------------------
+        do 
+        {
+           
+          System.out.print("Your guess?: (enter 0 to quit) ");
+          guess = scan.nextInt();
+          numGuesses++;
+         
+          if (guess < answer &&numGuesses < 5 &&guess!= 0)
+          {System.out.println("higher");}
+          else if (guess > answer &&numGuesses < 5 &&guess!= 0)
+          {System.out.println("lower");}
+          else if (guess == answer &guess!=0)
+          {System.out.println("You got it right in " + numGuesses + " guesses.");}
+          else if(guess != answer &&guess!=0)
+          {System.out.println("Incorrect! You reached " + numGuesses + " tries.");
+          {System.out.println("The number was " + answer + ".");}}
+          if (guess == 0)
+          {System.out.println("Goodbye!"); break;}
+          
+          
+
+        }
+        while (guess != answer &&numGuesses < 5);
+       
+//-------------------------------------------------------------------------
+//The user is prompted for a response to play again or end game.
+//The if- then statement allows for the game to end.
+//The while statement from the first do loop allows the game to start again.
+//-------------------------------------------------------------------------
+        System.out.println ("Want to play again? Enter 1 for yes or 2 for no: ");
+        again = scan.nextInt();
+        if (again == 2) {System.out.println("Goodbye!"); break;}
+        
+        } 
+        while (again == 1);
